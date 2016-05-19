@@ -12,6 +12,11 @@ import developer.egen.api.MetricsRestController;
 import developer.egen.collections.Alerts;
 import developer.egen.dao.AlertsDAOImpl;
 
+/**
+ * Rule to check for Underweight condition based on the basevalue given as input
+ * and save underweight alert to MongoDB
+ * 
+ */
 @SpringRule
 public class MetricsUnderWeightRule {
 
@@ -29,6 +34,11 @@ public class MetricsUnderWeightRule {
 		this.alertsDAOImpl = alertsDAOImpl;
 	}
 
+	/**
+	 * 10% below base weight returns true
+	 * @return true/false
+	 * @throws Exception
+	 */
 	@Condition
 	public boolean checkForUnderWeight() throws Exception{
 		
@@ -43,6 +53,10 @@ public class MetricsUnderWeightRule {
 
 	}
 
+	/**
+	 * save overweightalert to mongoDB with a message
+	 * @throws Exception
+	 */
 	@Action
 	public void createAlert() throws Exception {
 		

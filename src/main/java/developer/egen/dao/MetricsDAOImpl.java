@@ -23,6 +23,8 @@ public class MetricsDAOImpl extends BasicDAO<Metrics, ObjectId> implements Metri
 		super(dataStore);
 	}
 
+	/** DAO implementation to fetch metrics from mongoDB based on timestamp
+	 * **/
 	@Override
 	public List<Metrics> readMetricsByTimeRange(String timestamp1, String timestamp2) throws Exception{
 		logger.info("In readMeticsByTimeRange DAO -"+timestamp1+"-"+timestamp2);

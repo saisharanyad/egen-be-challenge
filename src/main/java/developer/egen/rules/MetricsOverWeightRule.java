@@ -12,6 +12,12 @@ import developer.egen.api.MetricsRestController;
 import developer.egen.collections.Alerts;
 import developer.egen.dao.AlertsDAOImpl;
 
+/**
+ * Rule to check for Overweight based on the basevalue given as input
+ * and save overweight alert to MongoDB
+ * 
+ */
+
 @SpringRule
 public class MetricsOverWeightRule {
 
@@ -29,6 +35,11 @@ public class MetricsOverWeightRule {
 		this.alertsDAOImpl = alertsDAOImpl;
 	}
 
+	/**
+	 * 10% over base weight returns true
+	 * @return true/false
+	 * @throws Exception
+	 */
 	@Condition
 	public boolean checkForOverWeight() throws Exception{
 
@@ -41,6 +52,11 @@ public class MetricsOverWeightRule {
 		}
 		return false;
 	}
+	
+	/**
+	 * save overweightalert to mongoDB with a message
+	 * @throws Exception
+	 */
 
 	@Action
 	public void createAlert() throws Exception{

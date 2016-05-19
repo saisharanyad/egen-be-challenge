@@ -15,6 +15,13 @@ public class FireRulesUtil {
 	
 	public static double BASE_WIEGHT = 0;
 	
+	/**
+	 * firesrules to create alerts
+	 * @param value
+	 * @param rulesEngineFactoryBean
+	 * @param alertsDAOImpl
+	 * @throws Exception
+	 */
 	public static void fireRules(double value,RulesEngineFactoryBean rulesEngineFactoryBean,AlertsDAOImpl alertsDAOImpl) throws Exception{
 		logger.info("In firerules method "+value);
 		MetricsOverWeightRule overweightrule = new MetricsOverWeightRule(alertsDAOImpl);

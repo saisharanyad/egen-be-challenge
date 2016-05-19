@@ -20,6 +20,13 @@ import developer.egen.dao.AlertsDAOImpl;
 import developer.egen.dao.MetricsDAOImpl;
 import developer.egen.rules.FireRulesUtil;
 
+
+
+/** 
+ * RestController exposing api to read all metrics and 
+ * specific metrics by timestamp.
+ * 
+ * **/
 @RestController
 @RequestMapping(value = "/metrics")
 public class MetricsRestController {
@@ -36,7 +43,10 @@ public class MetricsRestController {
 	private AlertsDAOImpl alertsDAOImpl;
 
 	private int count = 0;
-
+	
+	
+	/*POST method to create metrics and alerts based on rules
+	 * */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public void createMetrics(@RequestBody Metrics metrics) {
 
@@ -47,6 +57,7 @@ public class MetricsRestController {
 			if (count == 1) {
 				FireRulesUtil.BASE_WIEGHT = value;
 			}
+			//fire rules to create alerts
 			FireRulesUtil.fireRules(value, rulesEngineFactoryBean, alertsDAOImpl);
 			metricsDAOImpl.save(metrics);
 
@@ -57,6 +68,8 @@ public class MetricsRestController {
 
 	}
 
+	/*GET method to read all metrics
+	 * */
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public ResponseEntity<List<Metrics>> readAllMetrics() {
 
@@ -71,6 +84,10 @@ public class MetricsRestController {
 		return new ResponseEntity<List<Metrics>>(metricsList.asList(),HttpStatus.OK);
 	}
 
+	/*GET method to read metrics based on timestamp
+	 * @param1 timestamp
+	 * @param2 timestamp
+	 * */
 	@RequestMapping(value = "/read/{timestamp1}/{timestamp2}", method = RequestMethod.GET)
 	public ResponseEntity<List<Metrics>> readMetricsbyTimeRange(@PathVariable("timestamp1") String timestamp1,
 			@PathVariable("timestamp2") String timestamp2) {

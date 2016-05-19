@@ -23,11 +23,15 @@ public class ApplicationConfiguration {
 	@Autowired
 	private Environment environment;
 	
+	/*instantiates and returns Morphia bean
+	 * */
 	@Bean
 	public Morphia getMorphia(){
 		return new Morphia();
 	}
 	
+	/*configure and return MongClient
+	 * */
 	@Bean
 	public MongoClient getClient(){
 		MongoClient mongoClient = null;
@@ -41,6 +45,7 @@ public class ApplicationConfiguration {
 		return mongoClient;
 	}
 	
+	/*configure datastore object*/
 	@Bean
 	public Datastore dataStore(){
 		Morphia morphia = getMorphia();
@@ -48,6 +53,7 @@ public class ApplicationConfiguration {
 		return morphia.createDatastore(getClient(),environment.getRequiredProperty("mongo.DB"));
 	}
 	
+	/** create RulesEngineFactoryBean instance **/
 	@Bean
 	public RulesEngineFactoryBean getRulesFactory(){
 		return new RulesEngineFactoryBean();

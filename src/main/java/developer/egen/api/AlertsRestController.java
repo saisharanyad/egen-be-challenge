@@ -15,6 +15,12 @@ import developer.egen.collections.Alerts;
 import developer.egen.collections.Metrics;
 import developer.egen.dao.AlertsDAOImpl;
 
+
+/** 
+ * RestController exposing api to read all alerts and 
+ * specific alerts by timestamp.
+ * 
+ * **/
 @RestController
 @RequestMapping(value = "/alerts")
 public class AlertsRestController {
@@ -24,6 +30,8 @@ public class AlertsRestController {
 	@Autowired
 	private AlertsDAOImpl alertsDAOImpl;
 
+	/*GET method to read all alerts
+	 * */
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public ResponseEntity<List<Alerts>> readAllAlerts() {
 		logger.info("In readAlerts  method ");
@@ -36,6 +44,10 @@ public class AlertsRestController {
 		return new ResponseEntity<List<Alerts>>(alertsList.asList(),HttpStatus.OK);
 	}
 
+	/*GET method to read alerts based on timestamp
+	 * @param1 timestamp
+	 * @param2 timestamp
+	 * */
 	@RequestMapping(value = "/read/{timestamp1}/{timestamp2}", method = RequestMethod.GET)
 	public ResponseEntity<List<Alerts>> readAlertsbyTimeRange(@PathVariable("timestamp1") String timestamp1,
 			@PathVariable("timestamp2") String timestamp2) {

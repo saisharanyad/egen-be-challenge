@@ -25,6 +25,8 @@ public class AlertsDAOImpl extends BasicDAO<Alerts, ObjectId> implements AlertsD
 		super(dataStore);
 	}
 
+	/** DAO implementation to fetch alerts from mongoDB based on timestamp
+	 * **/
 	@Override
 	public List<Alerts> readAlertsByTimeRange(String timestamp1, String timestamp2) throws Exception{
 		
