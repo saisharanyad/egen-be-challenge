@@ -1,0 +1,13 @@
+developer\egen\dao\MetricsDAOImpl.class
+developer\egen\dao\MetricsDAO.class
+developer\egen\rules\MetricsUnderWeightRule.class
+developer\egen\dao\AlertsDAOImpl.class
+developer\egen\rules\FireRulesUtil.class
+developer\egen\api\AlertsRestController.class
+developer\egen\collections\Alerts.class
+developer\egen\rules\MetricsOverWeightRule.class
+developer\egen\collections\Metrics.class
+developer\egen\MicroservicesEgenChallengeApplication.class
+developer\egen\api\MetricsRestController.class
+developer\egen\dao\AlertsDAO.class
+developer\egen\config\ApplicationConfiguration.class
